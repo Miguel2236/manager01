@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<schemas xmlns='http://xml.netbeans.org/schema/JAXBWizConfig' destdir='build/generated-sources/jaxb' projectName='exampleXML01' version='1.0'>
+	<schema type='-xmlschema' package='com.manager' name='vending'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='xml-resources/jaxb/vending/ManagerMsgv01.xsd' origLocation='../../Descargas/codigos/Definición XMLs Manager/ManagerMensaje/ManagerMsgv01.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+</schemas>

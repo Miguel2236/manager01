@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ManagerMensaje comando="Cobrar">
+    <Transaccion abono="false" cantidad="1" idServicio="23" importe="350.0" referencia="REF000964" tipoPago="1" total="350.0"/>
+    <Ticket titulo="Recibo Oficial">
+        <Datos>
+            <Dato descripcion="ERDD345" nombre="Cuenta"/>
+        </Datos>
+        <Conceptos qty="false">
+            <Concepto descripcion="Pago de acta de nacimiento" importe="350.0"/>
+        </Conceptos>
+    </Ticket>
+    <Script url="http://localhost/demo/registraPago?num=1&amp;amp;id=200"/>
+    <Documento url="http://localhost/demo/registraPago?num=1&amp;amp;id=200"/>
+</ManagerMensaje>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="ManagerMensaje">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Transaccion"/>
+        <xs:element ref="Ticket"/>
+        <xs:element ref="Script" minOccurs="0"/>
+        <xs:element minOccurs="0" ref="Documento"/>
+      </xs:sequence>
+      <xs:attribute name="comando" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="(consultar|cobrar)"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Transaccion">
+    <xs:complexType>
+      <xs:attribute name="abono" use="required" type="xs:boolean"/>
+      <xs:attribute name="cantidad" use="required" type="xs:int"/>
+      <xs:attribute name="idServicio" use="required" type="xs:int"/>
+      <xs:attribute name="importe" use="required" type="xs:double"/>
+      <xs:attribute name="referencia" use="required" type="xs:string"/>
+      <xs:attribute name="tipoPago" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:short">
+            <xs:minInclusive value="1"/>
+            <xs:totalDigits value="1"/>
+            <xs:pattern value="[\-+]?[1-6]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="total" use="required" type="xs:double"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ticket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Datos"/>
+        <xs:element ref="Conceptos"/>
+      </xs:sequence>
+      <xs:attribute name="titulo" use="optional" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Datos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Dato"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Dato">
+    <xs:complexType>
+      <xs:attribute name="descripcion" use="required" type="xs:string"/>
+      <xs:attribute name="nombre" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Conceptos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Concepto"/>
+      </xs:sequence>
+      <xs:attribute name="qty" type="xs:boolean" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Concepto">
+    <xs:complexType>
+      <xs:attribute name="cantidad" type="xs:int"/>
+      <xs:attribute name="descripcion" use="required" type="xs:string"/>
+      <xs:attribute name="importe" use="required" type="xs:double"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Script">
+    <xs:complexType>
+      <xs:attribute name="url" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Documento">
+    <xs:complexType>
+      <xs:attribute name="url" type="xs:anyURI" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
